@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'models/dog.dart';
+import 'package:dog_app/gog_detail.dart';
 
 class DogCard extends StatefulWidget {
   final Dog dog;
@@ -29,14 +30,31 @@ class _DogCardState extends State<DogCard> {
     }
   }
 
+  void showDetailPage() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return DogDetail(dog);
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Contaner(
-      height: 115,
-      child: Stack(
-        children: <Widget>[
-          Positioned(child: dogImage),
-        ],
+    return InkWell(
+      onTap: showDetailPage,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Container(
+          height: 115,
+          child: Stack(
+            children: <Widget>[
+              Positioned(child: dogCard, left: 50),
+              Positioned(child: dogImage, top: 7.5)
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -57,10 +75,10 @@ class _DogCardState extends State<DogCard> {
 
   Widget get dogCard {
     return Container(
-      width: 290,
+      width: 340,
       height: 115,
       child: Card(
-        color: Colors.black87,
+        color: Theme.of(context).backgroundColor,
         child: Padding(
             padding: const EdgeInsets.only(top: 0.8, bottom: 8.0, left: 64),
             child: Column(
