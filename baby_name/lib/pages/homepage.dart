@@ -10,12 +10,46 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  void _addBabyName() {
+    Navigator.push(context, )
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Baby Name Votes')),
-      body: _buildBody(context),
-    );
+        appBar: AppBar(
+          title: Text('Baby Names'),
+          backgroundColor: Colors.black87,
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.add), onPressed: _addBabyName)
+          ],
+        ),
+        body: _buildBody(context),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('Baby Names'),
+                decoration: BoxDecoration(color: Colors.blue),
+              ),
+              ListTile(
+                title: Text('Item 1'),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+              ListTile(
+                title: Text('Item 2'),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+            ],
+          ),
+        ));
   }
 
   Widget _buildBody(BuildContext context) {
